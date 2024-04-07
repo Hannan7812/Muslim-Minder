@@ -9,6 +9,9 @@ import java.util.List;
 
 @Dao
 public interface DuasDao {
-    @Query("SELECT * FROM duas")
+    @Query("SELECT * FROM Duas")
     LiveData<List<Duas>> getAllDuas();  // Return LiveData instead of List
+
+    @Query("SELECT * FROM Duas WHERE id = :id")
+    LiveData<List<Duas>> getDuasById(int id);
 }
