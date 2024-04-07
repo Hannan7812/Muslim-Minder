@@ -13,4 +13,12 @@ public class Duas {
 
     @NotNull
     public String text;
+
+    @Override
+    public String toString(){
+        return text;
+    }
+    public String getId() {
+        return String.valueOf(id);
+    }
 }
