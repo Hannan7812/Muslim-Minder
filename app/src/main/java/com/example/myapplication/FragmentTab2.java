@@ -7,22 +7,20 @@ import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import data.Duas;
+import data.Dua;
 
 public class FragmentTab2 extends Fragment {
     private RecyclerView duaRecyclerView;
     private FragmentTab2 lifecycleOwner;
     private DuaAdapter adapter;
     private Module1ViewModel viewModel;
-    List<Duas> buttons;
+    List<Dua> buttons;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -36,19 +34,17 @@ public class FragmentTab2 extends Fragment {
 
         // Create a list of FeelingButtons with your desired text and IDs
         viewModel = new Module1ViewModel(getActivity().getApplication());
-        viewModel.getAllDuas().observe(getViewLifecycleOwner(), new Observer<List<Duas>>() {
+        viewModel.getFavoriteDuas().observe(getViewLifecycleOwner(), new Observer<List<Dua>>() {
             @Override
-            public void onChanged(List<Duas> duas) {
+            public void onChanged(List<Dua> duas) {
                 buttons = duas;
-                adapter = new DuaAdapter(buttons, lifecycleOwner);
+                adapter = new DuaAdapter(buttons, lifecycleOwner, viewModel);
                 duaRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                 duaRecyclerView.setAdapter(adapter);
 
 
             }
         });
-        // ... add more buttons as needed
-
         return view;
     }
 }

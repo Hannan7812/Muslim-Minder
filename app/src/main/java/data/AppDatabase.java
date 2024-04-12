@@ -6,7 +6,7 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-@Database(entities = {Duas.class}, version = 1)
+@Database(entities = {Dua.class}, version = 1)
     public abstract class AppDatabase extends RoomDatabase{
     public abstract DuasDao duasDao();
     public static volatile AppDatabase INSTANCE;

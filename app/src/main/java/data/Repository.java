@@ -5,10 +5,11 @@ import android.app.Application;
 import androidx.lifecycle.LiveData;
 
 import java.util.List;
+import java.util.concurrent.Executors;
 
 public class Repository {
     private final DuasDao duasDao;
-    private LiveData<List<Duas>> allDuas;
+    private LiveData<List<Dua>> allDuas;
 
     public Repository(Application application){
         AppDatabase db = AppDatabase.getDatabase(application);
@@ -16,11 +17,31 @@ public class Repository {
         allDuas = duasDao.getAllDuas();
     }
 
-    public LiveData<List<Duas>> getAll(){
+    public LiveData<List<Dua>> getAll(){
         return allDuas;
     }
 
-    public LiveData<List<Duas>> getDuasById(int id){
-        return duasDao.getDuasById(id);
+    public LiveData<List<Dua>> getDuasById(int id){
+        return duasDao.getDuasByFeelingId(id);
+    }
+
+    public LiveData<List<Dua>> getFavoriteDuas(){
+        return duasDao.getFavoriteDuas();
+    }
+
+    public void addFavoriteAndUpdateDua(int id) {
+        Executors.newSingleThreadExecutor().execute(() -> {
+            duasDao.addFavorite(id);
+        });
+    }
+
+    public LiveData<Dua> getUpdatedDua(int id) {
+        return duasDao.getDuaById(id);
+    }
+
+    public void removeFavoriteAndUpdateDua(int id){
+        Executors.newSingleThreadExecutor().execute(() -> {
+            duasDao.removeFavorite(id);
+        });
     }
 }

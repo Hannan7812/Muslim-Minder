@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.NonNull;
@@ -22,10 +23,9 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.tabs.TabLayout;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import data.Duas;
+import data.Dua;
 
 public class Module1 extends AppCompatActivity {
 
@@ -132,14 +132,14 @@ class FeelingButtonAdapter extends RecyclerView.Adapter<ButtonViewHolder> {
         holder.dbutton.setId(feelingButton.getId());
 
         holder.dbutton.setOnClickListener(v -> {
-        viewModel.getDuasById(feelingButton.getId()).observe(lifecycleOwner, new Observer<List<Duas>>() {
+        viewModel.getDuasById(feelingButton.getId()).observe(lifecycleOwner, new Observer<List<Dua>>() {
 
             @Override
-            public void onChanged(List<Duas> duas) {
+            public void onChanged(List<Dua> duas) {
                 if (duas != null) {
                     FragmentManager fragmentManager = lifecycleOwner.getActivity().getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    Fragment duaCardFragment = new DuaCardFragment(duas);
+                    Fragment duaCardFragment = new DuaCardFragment(duas, viewModel);
                     fragmentTransaction.replace(R.id.frameLayoutTab1, duaCardFragment);
                     fragmentTransaction.addToBackStack(null);
                     fragmentTransaction.commit();
@@ -183,19 +183,27 @@ class ViewPagerAdapter extends FragmentStateAdapter{
 class DuaViewHolder extends RecyclerView.ViewHolder {
     TextView arabicText;
     TextView englishText;
+    TextView referenceText;
+    Button addToFav;
 
     public DuaViewHolder(@NonNull View itemView) {
         super(itemView);
         arabicText = itemView.findViewById(R.id.dua_arabic);
         englishText = itemView.findViewById(R.id.dua_translation);
+        referenceText = itemView.findViewById(R.id.reference);
+        addToFav = itemView.findViewById(R.id.fav_button);
     }
 }
 
 class DuaAdapter extends RecyclerView.Adapter<DuaViewHolder> {
-    private List<Duas> duas;
+    private List<Dua> duas;
+    private Module1ViewModel viewModel;
+    private LifecycleOwner lifecycleOwner;
 
-    public DuaAdapter(List<Duas> duas, LifecycleOwner lifecycleOwner){
+    public DuaAdapter(List<Dua> duas, LifecycleOwner lifecycleOwner, Module1ViewModel viewModel){
         this.duas = duas;
+        this.viewModel = viewModel;
+        this.lifecycleOwner = lifecycleOwner;
     }
 
     @NonNull
@@ -207,13 +215,51 @@ class DuaAdapter extends RecyclerView.Adapter<DuaViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull DuaViewHolder holder, int position) {
-        Duas dua = duas.get(position);
-        holder.arabicText.setText(dua.toString());
-        holder.englishText.setText(dua.getId());
+        Dua dua = duas.get(position);
+        holder.arabicText.setText(dua.arabic);
+        holder.englishText.setText(dua.english);
+        if (dua.arabic.equals("")) {
+            holder.referenceText.setVisibility(View.GONE);
+        } else {
+            holder.referenceText.setText(dua.reference);
+        }
+        if (lifecycleOwner instanceof FragmentTab2) {
+            holder.addToFav.setVisibility(View.GONE);
+        }
+        else {
+            if (dua.favorite == 0) {
+                holder.addToFav.setText("Add to Favorites");
+            } else {
+                holder.addToFav.setText("Remove from Favorites");
+            }
+        }
+
+        holder.addToFav.setOnClickListener(v -> {
+            if (dua.favorite == 0) {
+                viewModel.addFavoriteAndUpdateDua(dua.id);
+                Toast.makeText(holder.itemView.getContext(), "Dua added to favorites", Toast.LENGTH_SHORT).show();
+            } else {
+                viewModel.removeFavoriteAndUpdateDua(dua.id);
+                Toast.makeText(holder.itemView.getContext(), "Dua removed from favorites", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        viewModel.getUpdatedDua(dua.id).observe((LifecycleOwner) holder.itemView.getContext(), new Observer<Dua>() {
+            @Override
+            public void onChanged(Dua dua) {
+                if (dua.favorite == 0) {
+                    holder.addToFav.setText("Add to Favorites");
+                } else {
+                    holder.addToFav.setText("Remove from Favorites");
+                }
+            }
+        });
     }
+
 
     @Override
     public int getItemCount() {
         return duas.size();
     }
 }
+

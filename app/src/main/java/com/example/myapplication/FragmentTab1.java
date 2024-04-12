@@ -3,6 +3,7 @@ package com.example.myapplication;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -31,13 +32,17 @@ public class FragmentTab1 extends Fragment {
 
         // Create a list of FeelingButtons with your desired text and IDs
         List<FeelingButton> buttons = new ArrayList<>();
-        buttons.add(new FeelingButton("Happy", 1));
-        buttons.add(new FeelingButton("Sad", 2));
+        buttons.add(new FeelingButton("Anxious", 1));
+        buttons.add(new FeelingButton("Confused", 2));
         buttons.add(new FeelingButton("Angry", 3));
+        buttons.add(new FeelingButton("Content", 4));
+        buttons.add(new FeelingButton("Confident", 5));
+        buttons.add(new FeelingButton("Bored", 6));
+
         // ... add more buttons as needed
 
         adapter = new FeelingButtonAdapter(buttons, viewModel, lifecycleOwner);
-        buttonRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        buttonRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         buttonRecyclerView.setAdapter(adapter);
 
         return view;

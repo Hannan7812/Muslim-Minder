@@ -6,34 +6,33 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.FrameLayout;
 
 import java.util.List;
 
-import data.Duas;
+import data.Dua;
 
 public class DuaCardFragment extends Fragment {
-    private List<Duas> duas;
+    private List<Dua> duas;
     private RecyclerView duaRecyclerView;
     private FragmentActivity lifecycleOwner;
     private DuaAdapter adapter;
     private FragmentManager fragmentManager;
+    private Module1ViewModel viewModel;
 
     public DuaCardFragment() {
         // Required empty public constructor
     }
 
-    public DuaCardFragment(List<Duas> duas) {
+    public DuaCardFragment(List<Dua> duas, Module1ViewModel viewModel) {
         this.duas = duas;
+        this.viewModel = viewModel;
     }
 
 
@@ -47,7 +46,7 @@ public class DuaCardFragment extends Fragment {
         lifecycleOwner = this.getActivity();
         fragmentManager = this.getParentFragmentManager();
 
-        adapter = new DuaAdapter(duas, lifecycleOwner);
+        adapter = new DuaAdapter(duas, lifecycleOwner, viewModel);
         duaRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         duaRecyclerView.setAdapter(adapter);
 
@@ -55,7 +54,7 @@ public class DuaCardFragment extends Fragment {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fragmentManager.popBackStack();
+                fragmentManager.popBackStack(null, fragmentManager.POP_BACK_STACK_INCLUSIVE);
             }
         });
         return view;
