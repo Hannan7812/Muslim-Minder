@@ -15,7 +15,7 @@ fulfilling their religious obligations and fostering a deeper connection with Al
 
 The application uses the core concepts of Object Oriented Programming to function. In our effort to keep the app as accessible as possible, we used an SQLite database which is stored locally on the users device for quick and easy access to the 
 supplications without any need of an internet connection. However, to get accurate and reliable prayer times, an internet connection is required. This was done because the calculation of these times is done by professional theologians and we 
-intended only to provide the user that information easily. Furthermore, various schools of thought have different methods for calculating prayer times. We used the [ MuslimSalat API ]( https://muslimsalat.com/ ) API for retrieving and displaying 
+intended only to provide the user that information easily. Furthermore, various schools of thought have different methods for calculating prayer times. We used the [ MuslimSalat API ]( https://muslimsalat.com/ ) for retrieving and displaying 
 the prayer times.
 
 ### Installing and Running the project
