@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Home"
+        android:icon="@drawable/home"
+        android:id="@+id/home"/>
+    <item android:title="Supplications"
+        android:id="@+id/supplications"
+        android:icon="@drawable/dua_hands"
+        />
+    <item android:title="Favorites"
+        android:id="@+id/favorites"
+        android:icon="@drawable/heart_svgrepo_com"/>
+    <item android:title="More"
+        android:id="@+id/more"
+        android:icon="@drawable/baseline_apps_24"/>
+</menu>

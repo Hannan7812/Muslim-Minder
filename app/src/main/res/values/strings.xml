@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Muslim Minder</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="reference">Reference</string>
+    <string name="home_dua_arabic">اللَّهُمَّ اسْتُرْ عَوْرَاتِهِم وَآمِنْ رَوْعَاتِهِم وَاحْفَظْهُم مِنْ بَيْنِ أَيْدِيهِم وَمِنْ خَلْفِهِم وَعَنْ أَيمَانِهِم وَعَنْ شَمَائلِهِم وَمِنْ فَوْقِهِم</string>
+    <string name="home_dua_translation">O Allah, conceal their faults, calm their fears, and protect them from before them and behind them, from their right and from their left, and from above them.</string>
+    <string name="home_dua_reference">Taken from the morning and evening remembrances of the Prophet (P.B.U.H) this du\'a seeks Allah\’s protection from every direction. It is a befitting du\'a for the people of Gaza, who are surrounded by hostility and violence.</string>
+</resources>
