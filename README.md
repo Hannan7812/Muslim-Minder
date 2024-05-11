@@ -3,10 +3,13 @@
 ### Description
 This android app is developed to inculcate some of the most important requirements on a day-to-day basis of a Muslim. This application goes beyond simply providing prayer timings; it comes out to be a comprehensive and user-friendly resource 
 for daily Islamic practice.
+
 The application offers a location-based prayer time notification system, ensuring users remain aware of their salat obligations regardless of their whereabouts. Recognizing the importance of supplication in various situations, the application 
 also features a selection of duas categorized by emotions and circumstances. This allows users to find appropriate prayers for moments of joy, gratitude, anxiety, or any other emotional state they encounter.
+
 Furthermore, the application will integrate a tasbih counter, facilitating the act of dhikr (remembrance of Allah) throughout the day. Users can utilize this feature to silently count their supplications and strengthen their spiritual 
 connection. Finally, the application will display the 99 Names of Allah (SWT), allowing users to explore their meanings and gain a deeper understanding of the divine attributes.
+
 This application is designed to be a valuable tool for Muslims seeking to integrate their faith seamlessly into their daily lives. Through its user-friendly interface and comprehensive features, the application aims to support users in 
 fulfilling their religious obligations and fostering a deeper connection with Allah (SWT).
 
