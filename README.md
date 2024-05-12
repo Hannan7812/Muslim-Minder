@@ -28,8 +28,7 @@ The project will be launched as soon as possible but currently, the project is n
 The instructions will be updated as soon as the project goes live on Google Playstore.
 
 ### Contributing
-The project was made open source purely for the sake of contribution. It is open to anyone and everyone to learn from and contribute to
+The project was made open source purely for the sake of contribution. It is open to anyone and everyone to learn from, contribute to, improve and expand.
 
 ### Credits
-I would like to express my gratitude to both [Daniyal Qadir](https://github.com/mqadir23) and [Areesha Fatima](https://github.com/areeshafatima23) for their invaluable contributions to this project. Furthermore, I would like to acknowledge the role of [ Islamestic website ]( https://www.islamestic.com/ ) for giving
-us the inspiration to work on such a project.
+I would like to express my gratitude to both [Daniyal Qadir](https://github.com/mqadir23) and [Areesha Fatima](https://github.com/areeshafatima23) for their invaluable contributions to this project. Furthermore, I would like to acknowledge the role of [ Islamestic website ]( https://www.islamestic.com/ ) for giving us the inspiration to work on such a project.
