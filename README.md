@@ -24,6 +24,7 @@ The project will be launched as soon as possible but currently, the project is n
 - Upon launch, click on "Get From VCS"
 - Paste the repository link and wait for android studio to intitialize the project
 - Run the application on the emulator or on your Smartphone. More details about running it on smartphone can be found [ here ]( https://developer.android.com/studio/run/device )
+
 The instructions will be updated as soon as the project goes live on Google Playstore.
 
 ### Contributing
