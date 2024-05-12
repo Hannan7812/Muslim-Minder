@@ -13,8 +13,9 @@ connection. Finally, the application will display the 99 Names of Allah (SWT), a
 This application is designed to be a valuable tool for Muslims seeking to integrate their faith seamlessly into their daily lives. Through its user-friendly interface and comprehensive features, the application aims to support users in 
 fulfilling their religious obligations and fostering a deeper connection with Allah (SWT).
 
+### Technical
 The application uses the core concepts of Object Oriented Programming to function. In our effort to keep the app as accessible as possible, we used an SQLite database which is stored locally on the users device for quick and easy access to the 
-supplications without any need of an internet connection. However, to get accurate and reliable prayer times, an internet connection is required. This was done because the calculation of these times is done by professional theologians and we 
+supplications without any need of an internet connection. For this purpose, we used the [Room database library](https://developer.android.com/training/data-storage/room) to set up the database. However, to get accurate and reliable prayer times, an internet connection is required. This was done because the calculation of these times is done by professional theologians and we 
 intended only to provide the user that information easily. Furthermore, various schools of thought have different methods for calculating prayer times. We used the [ MuslimSalat API ]( https://muslimsalat.com/ ) for retrieving and displaying 
 the prayer times.
 
